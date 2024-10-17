@@ -1,4 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>D3.js Bar Chart with Tooltips</title>
+  <style>
+    /* Styling for the bar chart */
+    .bar {
+      transition: fill 0.3s;
+    }
+
+    .bar:hover {
+      fill: brown;
+    }
+
+    /* Optional: Center the chart */
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+  </style>
+</head>
 <body>
+  <script src="https://d3js.org/d3.v7.min.js"></script> <!-- D3.js library loaded from CDN -->
   <script>
     const dataset = [12, 31, 22, 17, 25, 18, 29, 14, 9];
 
@@ -36,14 +64,5 @@
        .attr("dx", "12.5");
 
   </script>
-
-  <style>
-    .bar {
-      transition: fill 0.3s;
-    }
-
-    .bar:hover {
-      fill: brown;
-    }
-  </style>
 </body>
+</html>
