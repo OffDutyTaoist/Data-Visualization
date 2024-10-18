@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>GDP Bar Chart</title>
+</head>
+<body>
+  <script src="https://d3js.org/d3.v6.min.js"></script>
+  <script>
+    // Sample GDP dataset (in billions)
+    const dataset = [
+      { country: "USA", gdp: 21433 },
+      { country: "China", gdp: 14140 },
+      { country: "Japan", gdp: 5157 },
+      { country: "Germany", gdp: 3846 },
+      { country: "India", gdp: 2875 }
+    ];
+
+    const w = 800;
+    const h = 400;
+    
+    const xScale = d3.scaleLinear()
+                     .domain([0, d3.max(dataset, d => d.gdp)]) 
+                     .range([0, w]);                           
+
+    // Create an SVG container
+    const svg = d3.select("body")
+                  .append("svg")
+                  .attr("width", w)
+                  .attr("height", h);
+
+    // Create bars for GDP
+    svg.selectAll("rect")
+       .data(dataset)
+       .enter()
+       .append("rect")
+       .attr("x", 0)  // Bars start from the left
+       .attr("y", (d, i) => i * 80)  // Position bars vertically
+       .attr("width", d => xScale(d.gdp))  // Width scaled based on GDP
+       .attr("height", 40)
+       .attr("fill", "blue");
+
+    // Add labels for countries
+    svg.selectAll("text")
+       .data(dataset)
+       .enter()
+       .append("text")
+       .attr("x", 10)  // Slight padding from the left
+       .attr("y", (d, i) => i * 80 + 25)  // Position labels inside the bars
+       .text(d => `${d.country}: $${d.gdp} billion`)
+       .attr("fill", "white")
+       .attr("font-size", "14px");
+
+  </script>
+</body>
+</html>
