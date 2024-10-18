@@ -1,0 +1,13 @@
+<body>
+  <script>
+    const positionData = [[1, 7, -4], [6, 3, 8], [2, 9, 3]];
+    
+    // Find the maximum value in the third column
+    const output = d3.max(positionData, (d) => d[2]); // Extract third element from each subarray
+
+    // Display the result
+    d3.select("body")
+      .append("h2")
+      .text(output);
+  </script>
+</body>
